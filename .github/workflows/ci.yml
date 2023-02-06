@@ -71,8 +71,9 @@ jobs:
           cache: yarn
           registry-url: "https://registry.npmjs.org"
           scope: "@brpaz"
+          always-auth: true
 
-      - name: Set git identify
+      - name: Set git identitiy
         run: |
           # https://github.com/actions/checkout/issues/13#issuecomment-724415212
           git config user.name "github-actions[bot]"
