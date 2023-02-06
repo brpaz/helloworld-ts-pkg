@@ -74,8 +74,9 @@ jobs:
 
       - name: Set git identify
         run: |
-          git config user.name ${{ github.actor }}}
-          git config user.email ${{ github.actor }}@users.noreply.github.com
+          # https://github.com/actions/checkout/issues/13#issuecomment-724415212
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
