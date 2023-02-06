@@ -92,9 +92,12 @@ jobs:
 
       - name: Publish to GitHub Packages
         run: |
-          echo -e "@brpaz:registry=https://npm.pkg.github.com\nhttps://npm.pkg.github.com/:_authToken=${{ env.NODE_AUTH_TOKEN }} " >> .npmrc
+          echo "@brpaz:registry=https://npm.pkg.github.com" >> .npmrc
 
-          cat ~/.npmrc
+          echo "https://npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
+
+          cat .npmrc
+
           yarn publish --access public --non-interactive  --non-interactive --new-version ${{ github.event.release.tag_name }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
