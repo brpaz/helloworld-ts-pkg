@@ -119,11 +119,11 @@ jobs:
         run: |
           echo "@brpaz:registry=https://npm.pkg.github.com" >> .npmrc
           echo "https://npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}" >> .npmrc
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish to GitHub Packages
         run: yarn publish --access public --non-interactive  --non-interactive --new-version ${RELEASE_TAG}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Update version in package.json
         run: npm version ${RELEASE_TAG} --force --no-git-tag-version
@@ -134,7 +134,7 @@ jobs:
           latest-version: ${{ github.event.release.name }}
           release-notes: ${{ github.event.release.body }}
 
-      - name: Commit updated Changelog
+      - name: Commit updated Changelog and Package.json
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: main
