@@ -6,6 +6,7 @@
 import type { JestConfigWithTsJest } from 'ts-jest';
 
 const jestConfig: JestConfigWithTsJest = {
+  testMatch: ['<rootDir>/**/*.spec.ts'],
   // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
 
