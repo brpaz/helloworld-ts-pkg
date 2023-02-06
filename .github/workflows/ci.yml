@@ -81,6 +81,9 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
+      - name: Build
+        run: yarn build
+
       - name: Publish to NPM
         run: yarn publish --access public --non-interactive --new-version ${{ github.event.release.tag_name }}
         env:
@@ -88,8 +91,8 @@ jobs:
 
       - name: Publish to GitHub Packages
         run: |
-          yarn config set registry https://npm.pkg.github.com
-          yarn publish --access public --non-interactive --new-version ${{ github.event.release.tag_name }} --registry https://npm.pkg.github.com
+          echo @brpaz:registry=https://npm.pkg.github.com/ >> .npmrc
+          yarn publish --access public --non-interactive --new-version ${{ github.event.release.tag_name }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
