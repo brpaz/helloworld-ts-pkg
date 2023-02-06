@@ -104,7 +104,7 @@ jobs:
           name: dist
           path: dist
 
-      - name: Set git identitiy
+      - name: Set git identity
         run: |
           # https://github.com/actions/checkout/issues/13#issuecomment-724415212
           git config user.name "github-actions[bot]"
