@@ -134,9 +134,14 @@ jobs:
       - name: Update version in package.json
         run: npm version ${RELEASE_TAG} --force --no-git-tag-version --allow-same-version
 
+      - name: Set release commit message
+        id: release_commit_message
+        run: |
+          echo "chore(release): bump version ${RELEASE_TAG}" >> $GITHUB_OUTPUT
+
       - name: Commit updated Changelog and Package.json
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: main
-          commit_message: "chore(release): [skip ci] bump version ${RELEASE_TAG}"
+          commit_message: "${{ steps.release_commit_message.outputs.commit_message }}"
           file_pattern: "CHANGELOG.md package.json"
