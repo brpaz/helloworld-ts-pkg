@@ -137,7 +137,7 @@ jobs:
       - name: Set release commit message
         id: release_commit_message
         run: |
-          echo "chore(release): bump version ${RELEASE_TAG}" >> $GITHUB_OUTPUT
+          echo "commit_message=chore(release): bump version ${RELEASE_TAG}" >> $GITHUB_OUTPUT
 
       - name: Commit updated Changelog and Package.json
         uses: stefanzweifel/git-auto-commit-action@v4
