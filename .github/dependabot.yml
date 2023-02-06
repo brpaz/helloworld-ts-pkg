@@ -1,0 +1,21 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    open-pull-requests-limit: 3
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+    reviewers:
+      - 'brpaz'
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 3
+    reviewers:
+      - 'brpaz'
+    labels:
+      - dependencies

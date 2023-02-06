@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "allowJs": false,
+    "moduleResolution": "Node",
+    "declaration": true,
+    "declarationDir": "dist/types",
+    "rootDir": "src"
+  },
+  "include": ["src/**/*"]
+}

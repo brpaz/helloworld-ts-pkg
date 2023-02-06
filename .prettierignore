@@ -1,0 +1,5 @@
+coverage
+reports
+.husky
+dist
+.github
