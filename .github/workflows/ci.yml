@@ -110,6 +110,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+      - name: Update Changelog
+        uses: stefanzweifel/changelog-updater-action@v1
+        with:
+          latest-version: ${{ github.event.release.name }}
+          release-notes: ${{ github.event.release.body }}
+
       - name: Publish to NPM
         run: yarn publish --access public --non-interactive --new-version ${RELEASE_TAG}
         env:
@@ -126,13 +132,7 @@ jobs:
         run: yarn publish --access public --non-interactive  --non-interactive --new-version ${RELEASE_TAG}
 
       - name: Update version in package.json
-        run: npm version ${RELEASE_TAG} --force --no-git-tag-version
-
-      - name: Update Changelog
-        uses: stefanzweifel/changelog-updater-action@v1
-        with:
-          latest-version: ${{ github.event.release.name }}
-          release-notes: ${{ github.event.release.body }}
+        run: npm version ${RELEASE_TAG} --force --no-git-tag-version --allow-same-version
 
       - name: Commit updated Changelog and Package.json
         uses: stefanzweifel/git-auto-commit-action@v4
