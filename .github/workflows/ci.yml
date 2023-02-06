@@ -72,6 +72,11 @@ jobs:
           registry-url: "https://registry.npmjs.org"
           scope: "@brpaz"
 
+      - name: Set git identify
+        run: |
+          git config user.name ${{ github.actor }}}
+          git config user.email ${{ github.actor }}@users.noreply.github.com
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
