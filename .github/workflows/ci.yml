@@ -87,7 +87,9 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to GitHub Packages
-        run: yarn publish --access public --non-interactive --new-version ${{ github.event.release.tag_name }} --registry https://npm.pkg.github.com
+        run: |
+          yarn config set registry https://npm.pkg.github.com
+          yarn publish --access public --non-interactive --new-version ${{ github.event.release.tag_name }} --registry https://npm.pkg.github.com
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

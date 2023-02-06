@@ -10,6 +10,12 @@
     "default": "./dist/esm/index.js"
   },
   "main": "./dist/cjs/index.js",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "package.json"
+  ],
   "scripts": {
     "prepare": "husky install",
     "build": "rimraf dist && yarn build:esm & yarn build:cjs",
