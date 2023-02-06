@@ -1,4 +1,4 @@
-name: 'CI'
+name: "CI"
 on:
   pull_request:
   push:
@@ -69,6 +69,8 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: yarn
+          registry-url: "https://registry.npmjs.org"
+          scope: "@brpaz"
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
@@ -94,5 +96,5 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: main
-          commit_message: 'docs(changelog): [skip ci] update changelog'
+          commit_message: "docs(changelog): [skip ci] update changelog"
           file_pattern: CHANGELOG.md
